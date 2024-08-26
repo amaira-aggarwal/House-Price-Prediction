@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House Price Predictor Tool</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url("house.png"); /* Add your background image URL */
+        background-size: cover;
+        background-position: center;
+        height: 150vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        background-color: rgba(
+          255,
+          255,
+          255,
+          0.8
+        ); /* Semi-transparent white background */
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 100%;
+      }
+      h1,
+      h2 {
+        text-align: center;
+        color: #78c370;
+      }
+      form {
+        margin-top: 20px;
+      }
+      .mb-3 {
+        margin-bottom: 20px;
+      }
+      .form-label {
+        font-weight: bold;
+      }
+      .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #007bff; /* Blue color for button */
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background-color: #0056b3; /* Darker shade of blue on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>House Price Predictor Tool</h1>
+      <h2>Enter your data</h2>
+      <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <div class="mb-3">
+          <label class="form-label">Your Area</label>
+          <input
+            class="form-control"
+            type="number"
+            name="area"
+            placeholder="Enter your Area"
+            min="0"
+            max="1000"
+          />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">BHK</label>
+          <select
+            class="form-control"
+            name="bhk"
+            placeholder="Enter your BHK"
+            required
+          >
+            <option class="placeholder" selected disabled value="">
+              Select BHK
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Bathroom</label>
+          <select
+            class="form-control"
+            name="bathroom"
+            placeholder="Enter your Bathroom"
+            required
+          >
+            <option class="placeholder" selected disabled value="">
+              Select Bathroom
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Furnishing</label>
+          <select
+            class="form-control"
+            name="furnishing"
+            placeholder="Enter your Furnishing"
+            required
+          >
+            <option class="placeholder" selected disabled value="">
+              Select Furnishing
+            </option>
+            <option value="furnished">Furnished</option>
+            <option value="semi-furnished">Semi Furnished</option>
+            <option value="un-furnished">Unfurnished</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Type</label>
+          <select
+            class="form-control"
+            name="type"
+            placeholder="Enter your Type"
+            required
+          >
+            <option class="placeholder" selected disabled value="">
+              Select Type
+            </option>
+            <option value="1">Builder Floor</option>
+            <option value="2">Apartment</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Status</label>
+          <select
+            class="form-control"
+            name="status"
+            placeholder="Enter your Status"
+            required
+          >
+            <option class="placeholder" selected disabled value="">
+              Select Status
+            </option>
+            <option value="ready_to_move">Ready to Move</option>
+            <option value="almost_ready">Almost Ready</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Transaction</label>
+          <select
+            class="form-control"
+            name="transaction"
+            placeholder="Enter you Transaction"
+            required
+          >
+            <option class="placeholder" selected disabled value="">
+              Select Transaction Type
+            </option>
+            <option value="new_property">New Property</option>
+            <option value="resale">Resale</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Parking</label>
+          <select
+            class="form-control"
+            name="parking"
+            placeholder="Enter your Parking"
+            required
+          >
+            <option class="placeholder" selected disabled value="">
+              Select Parking
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <!-- Other form fields similar to gender with proper styling -->
+        <div class="mb-3">
+          <input
+            class="btn btn-primary"
+            type="submit"
+            value="Predict your Price"
+            required
+          />
+        </div>
+      </form>
+      <h2>Prediction: `{results}`</h2>
+    </div>
+  </body>
+</html>
