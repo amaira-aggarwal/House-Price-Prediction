@@ -28,13 +28,9 @@ class DataTransformation:
         
         '''
         try:
-            numerical_columns = ["writing_score", "reading_score"]
+            numerical_columns = ["Area", "BHK","Parking"]
             categorical_columns = [
-                "gender",
-                "race_ethnicity",
-                "parental_level_of_education",
-                "lunch",
-                "test_preparation_course",
+                "Status","Type","Furnishing","Transaction"
             ]
 
             num_pipeline= Pipeline(
@@ -86,7 +82,7 @@ class DataTransformation:
             preprocessing_obj=self.get_data_transformer_object()
 
             target_column_name="Price"
-            numerical_columns = ["writing_score", "reading_score"]
+            numerical_columns = ["Area", "BHK","Parking"]
 
             input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
             target_feature_train_df=train_df[target_column_name]
