@@ -28,6 +28,7 @@ class DataIngestion:
         try:
             
             df=pd.read_csv('Notebook/Data/MagicBricks.csv')
+            df.drop(['Locality','Bathroom','Per_Sqft'],axis=1,inplace=True)
             logging.info('Read the dataset as dataframe')
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True)
